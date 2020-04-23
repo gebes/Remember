@@ -2,8 +2,10 @@
  A simple Android & iOS Game
 
 ## Screenshots
-![](https://i.imgur.com/HfPYq83.png)
-![](https://i.imgur.com/wzLJTs0.png)
+
+Screenshot 1               |  Screenshot 2
+:-------------------------:|:-------------------------:
+![](https://i.imgur.com/HfPYq83.png)  |  ![](https://i.imgur.com/wzLJTs0.png)
 
 ## What did I learn?
 * Redesigning old projects is fun
