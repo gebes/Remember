@@ -1,0 +1,15 @@
+{
+  "language.version": 1,
+
+  "app.title": "Remember",
+  "app.subtitle": "Remember the pattern!",
+
+  "game.win": "Nice! You won!",
+  "game.lose": "Nice try, maybe next time",
+
+  "ok": "Ok",
+
+  "menu.2x2": "2x2",
+  "menu.3x3": "3x3",
+  "menu.4x4": "4x4"
+}
