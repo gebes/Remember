@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome, SystemUiOverlay, SystemUiOverlayStyle, rootBundle;
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 export 'lang.dart';
 export 'widgets.dart';
@@ -14,6 +15,8 @@ export 'navigator.dart';
 export 'theme.dart';
 
 class App extends StatefulWidget {
+  static AudioCache audioPlayer = AudioCache();
+
   static final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
   static LanguageManager languageManager;

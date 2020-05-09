@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:Remember/app/app.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,14 +63,13 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
         setState(() {
           int old = current;
           current = animation.value.toInt();
-          if (old != current) audioCache.play("showingPattern.mp3");
+          if (old != current) App.audioPlayer.play("showingPattern.mp3");
         });
       });
     controller.forward();
     super.initState();
   }
 
-  AudioCache audioCache = AudioCache();
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +92,7 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
               }
               current++;
             });
-            if (wrongPress == -1) audioCache.play("click.mp3");
+            if (wrongPress == -1) App.audioPlayer.play("click.mp3");
             if (current == gridLength * gridLength || wrongPress != -1) {
               (wrongPress == -1) ? widget.onWin() : widget.onLose();
             }
