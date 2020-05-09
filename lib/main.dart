@@ -14,7 +14,9 @@ void main() {
           MaterialAppData(
             theme: AppTheme.android(context),
           ),
-      cupertino: (context) => CupertinoAppData(),
+      cupertino: (context) => CupertinoAppData(
+        theme: AppTheme.cupertino(context),
+      ),
       isFullscreen: true
   )));
 }

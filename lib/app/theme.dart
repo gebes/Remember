@@ -49,6 +49,13 @@ class AppTheme {
     );
   }
 
+  static cupertino(BuildContext context){
+    return CupertinoThemeData(
+      primaryColor: AppTheme.primary,
+      
+    );
+  }
+
   static get gradientBackground {
     return BoxDecoration(boxShadow: <BoxShadow>[BoxShadow(color: Colors.grey.shade200, offset: Offset(2, 4), blurRadius: 5, spreadRadius: 2)], gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: AppTheme.gradient));
   }

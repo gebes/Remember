@@ -54,4 +54,9 @@ class Path {
   String get get {
     return languageManager.get(this);
   }
+  Text get text{
+    return Text(get);
+  }
+
+
 }

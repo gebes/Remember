@@ -57,63 +57,13 @@ class _GameState extends State<Game> {
                       widget.gridsize,
                       onLose: () async {
                         audioCache.play("wrong.mp3");
-                        AwesomeDialog(
-                                context: context,
-                                animType: AnimType.BOTTOMSLIDE,
-                                dialogType: DialogType.ERROR,
-                                body: Center(
-                                  child: Text(
-                                    Path('game.lose').get,
-                                  ),
-                                ),
-                                btnOk: PlatformButton(
-                                  color: AppTheme.accentRed4,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 32.0, right: 32.0, top: 8, bottom: 8),
-                                    child: Text(
-                                      Path("ok").get,
-                                      style: TextStyle(color: AppTheme.neutral7),
-                                    ),
-                                  ),
-                                ),
-                                headerAnimationLoop: false,
-                                dismissOnTouchOutside: false)
-                            .show();
+                        showDialog(Path('game.lose').text);
                       },
                       onWin: () async {
                         _confettiControllerLeft.play();
                         _confettiControllerRight.play();
                         audioCache.play("win.mp3");
-                        AwesomeDialog(
-                                context: context,
-                                animType: AnimType.BOTTOMSLIDE,
-                                dialogType: DialogType.SUCCES,
-                                headerAnimationLoop: false,
-                                body: Center(
-                                  child: Text(
-                                    Path('game.win').get,
-                                  ),
-                                ),
-                                btnOk: PlatformButton(
-                                  color: AppTheme.accentGreen4,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 32.0, right: 32.0, top: 8, bottom: 8),
-                                    child: Text(
-                                      Path("ok").get,
-                                      style: TextStyle(color: AppTheme.neutral7),
-                                    ),
-                                  ),
-                                ),
-                                dismissOnTouchOutside: false)
-                            .show();
+                        showDialog(Path('game.win').text);
                       },
                     ),
                   ),
@@ -149,4 +99,20 @@ class _GameState extends State<Game> {
       ),
     );
   }
+
+  showDialog(Text content){
+    showPlatformDialog(context: context, builder: (_) => PlatformAlertDialog(
+      content: content,
+      actions: <Widget>[
+        PlatformDialogAction(
+          child: Path('ok').text,
+          onPressed: (){
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+        )
+      ],
+    ));
+  }
+
 }
