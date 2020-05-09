@@ -4,8 +4,8 @@
   "app.title": "Remember",
   "app.subtitle": "Remember the pattern!",
 
-  "game.win": "Nice! You won!",
-  "game.lose": "Nice try, maybe next time",
+  "game.win": "You are the winner!",
+  "game.lose": "Maybe you win next time",
 
   "ok": "Ok",
 
