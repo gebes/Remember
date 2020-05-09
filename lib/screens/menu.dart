@@ -14,13 +14,14 @@ class _GameMenuState extends State<GameMenu> {
   AudioCache player = new AudioCache();
 
   button(int size) {
-    return BeautifulButton(
+    return PlatformButton(
       onPressed: () {
         AppNavigator.navigateTo("/game/game", args: size);
         player.play("select.mp3");
       },
-      child: Text(Path("menu.${size}x$size").get),
+      child: Text(Path("menu.${size}x$size").get, style: TextStyle(color: AppTheme.neutral7),),
       padding: EdgeInsets.all(24),
+      iosFilled: (_) => CupertinoFilledButtonData(),
     );
   }
 
