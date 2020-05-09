@@ -26,13 +26,15 @@ class _GameMenuState extends State<GameMenu> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light));
     return PlatformScaffold(
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: AppTheme.gradient,
-            )),
+          colors: AppTheme.gradient,
+        )),
         child: Column(
           children: <Widget>[
             Flexible(
@@ -44,6 +46,10 @@ class _GameMenuState extends State<GameMenu> {
                   children: <Widget>[
                     //      Text(Path("app.title").get, style: TextStyle(fontSize: 48, color: AppTheme.neutral7),),
                     Image.asset("assets/logo.png"),
+                    Text(
+                      Path("app.subtitle").get,
+                      style: TextStyle(fontSize: 28, color: AppTheme.neutral7),
+                    ),
                   ],
                 ),
               ),
@@ -51,24 +57,19 @@ class _GameMenuState extends State<GameMenu> {
             Flexible(
               flex: 1,
               child: Center(
-                child: Column(
-                  children: <Widget>[
-                    Text(Path("app.subtitle").get, style: TextStyle(fontSize: 28, color: AppTheme.neutral7),),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 16.0, bottom: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            button(2),
-                            button(3),
-                            button(4),
-                          ],
-                        ),
-                      ),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 16.0, bottom: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        button(2),
+                        button(3),
+                        button(4),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),

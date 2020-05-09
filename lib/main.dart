@@ -16,6 +16,7 @@ void main() {
           ),
       cupertino: (context) => CupertinoAppData(
         theme: AppTheme.cupertino(context),
+
       ),
       isFullscreen: true
   )));
