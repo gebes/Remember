@@ -1,5 +1,5 @@
 # Remember
- A simple Android & iOS Game
+📱Mobile Game especially made for my school🏫 
 
 ## Screenshots
 
