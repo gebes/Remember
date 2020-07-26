@@ -101,21 +101,22 @@ class _GameState extends State<Game> {
 
   showDialog(Text content, bool hasWon) {
     showPlatformDialog(
-        context: context,
-        builder: (_) => PlatformAlertDialog(
-              content: content,
-              actions: <Widget>[
-                PlatformDialogAction(
-                  child: Path('ok').text,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    if (hasWon) {
-                      RateTheApp.showDialog(context);
-                    }
-                  },
-                )
-              ],
-            ));
+      context: context,
+      builder: (_) => PlatformAlertDialog(
+        content: content,
+        actions: <Widget>[
+          PlatformDialogAction(
+            child: Path('ok').text,
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              if (hasWon) {
+                RateTheApp.showDialog(context);
+              }
+            },
+          )
+        ],
+      ),
+    );
   }
 }

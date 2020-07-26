@@ -35,7 +35,6 @@ class AppTheme {
         ),
       ),
       appBarTheme: AppBarTheme(color: primary),
-      dialogTheme: DialogTheme(shape: shape),
       cardTheme: CardTheme(
         shape: shape,
       ),
