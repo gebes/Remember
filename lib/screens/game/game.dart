@@ -56,13 +56,13 @@ class _GameState extends State<Game> {
                       widget.gridsize,
                       onLose: () async {
                         App.audioPlayer.play("wrong.mp3");
-                        showDialog(Path('game.lose').text);
+                        showDialog(Path('game.lose').text, false);
                       },
                       onWin: () async {
                         _confettiControllerLeft.play();
                         _confettiControllerRight.play();
                         App.audioPlayer.play("win.mp3");
-                        showDialog(Path('game.win').text);
+                        showDialog(Path('game.win').text, true);
                       },
                     ),
                   ),
@@ -99,7 +99,7 @@ class _GameState extends State<Game> {
     );
   }
 
-  showDialog(Text content) {
+  showDialog(Text content, bool hasWon) {
     showPlatformDialog(
         context: context,
         builder: (_) => PlatformAlertDialog(
@@ -110,7 +110,9 @@ class _GameState extends State<Game> {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
-                    RateTheApp.showDialog(context);
+                    if (hasWon) {
+                      RateTheApp.showDialog(context);
+                    }
                   },
                 )
               ],
