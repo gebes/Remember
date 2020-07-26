@@ -110,9 +110,6 @@ class _GameState extends State<Game> {
           animType: AnimType.BOTTOMSLIDE,
           dismissOnBackKeyPress: false,
           dismissOnTouchOutside: false,
-          onDissmissCallback: () {
-            Navigator.pop(context);
-          },
           title: "",
           desc: AppLocalizations.of(context).translate('game.win'),
           btnOkOnPress: () {
