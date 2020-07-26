@@ -8,6 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(RememberApp());
 }
 
@@ -23,38 +25,37 @@ class RememberApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
-      primaryColor: AppTheme.primary,
-      backgroundColor: Colors.white,
-      splashColor: AppTheme.secondary,
-      primarySwatch: MaterialColorBuilder.fromColor(AppTheme.secondary),
-      buttonColor: AppTheme.secondary,
-      textTheme: TextTheme(headline1: TextStyle(fontFamily: "Roboto", fontWeight: FontWeight.w500, color: Colors.white, fontSize: 32), button: TextStyle(fontFamily: "Roboto", fontWeight: FontWeight.w500, fontSize: 24)),
-      inputDecorationTheme: InputDecorationTheme(
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.blueAccent,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.blue,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-      ),
-      appBarTheme: AppBarTheme(color: AppTheme.primary),
-      cardTheme: CardTheme(
-        shape: AppTheme.shape,
-      ),
-      buttonTheme: ButtonThemeData(
-        shape: AppTheme.shape,
-        textTheme: ButtonTextTheme.accent,
-        splashColor: AppTheme.primary,
+        primaryColor: AppTheme.primary,
+        backgroundColor: Colors.white,
+        splashColor: AppTheme.secondary,
+        primarySwatch: MaterialColorBuilder.fromColor(AppTheme.secondary),
         buttonColor: AppTheme.secondary,
-        colorScheme: Theme.of(context).colorScheme.copyWith(secondary: Colors.white), // Text color
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blueAccent,
+            ),
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+        ),
+        appBarTheme: AppBarTheme(color: AppTheme.primary),
+        cardTheme: CardTheme(
+          shape: AppTheme.shape,
+        ),
+        buttonTheme: ButtonThemeData(
+          shape: AppTheme.shape,
+          textTheme: ButtonTextTheme.accent,
+          splashColor: AppTheme.primary,
+          buttonColor: AppTheme.secondary,
+          colorScheme: Theme.of(context).colorScheme.copyWith(secondary: Colors.white), // Text color
+        ),
       ),
-    ),
       supportedLocales: [
         Locale('en', 'US'),
         Locale('de', 'DE'),

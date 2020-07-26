@@ -29,6 +29,7 @@ dependencies:
   awesome_dialog:
   devicelocale:
   rate_my_app:
+  flare_flutter:
 
 dev_dependencies:
   flutter_test:

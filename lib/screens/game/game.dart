@@ -1,10 +1,10 @@
 import 'dart:io';
 
+import 'package:Remember/utils/navigator.dart';
+import 'package:Remember/utils/rate.dart';
 import 'package:Remember/utils/theme.dart';
 import 'package:Remember/screens/game/grid.dart';
 import 'package:Remember/utils/app_localizations.dart';
-import 'package:Remember/utils/rate.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,13 +58,13 @@ class _GameState extends State<Game> {
                       widget.gridsize,
                       onLose: () async {
                         RememberApp.audioPlayer.play("wrong.mp3");
-                        showDialog(Text(AppLocalizations.of(context).translate('game.lose')), false);
+                        showDialog(false);
                       },
                       onWin: () async {
                         _confettiControllerLeft.play();
                         _confettiControllerRight.play();
                         RememberApp.audioPlayer.play("win.mp3");
-                        showDialog(Text(AppLocalizations.of(context).translate('game.win')), true);
+                        showDialog(true);
                       },
                     ),
                   ),
@@ -101,25 +101,42 @@ class _GameState extends State<Game> {
     );
   }
 
-  showDialog(Text content, bool hasWon) {
-    // showdDialog(
-    //   context: context,
-    //   builder: (_) => PlatformAlertDialog(
-    //     content: content,
-    //     actions: <Widget>[
-    //       PlatformDialogAction(
-    //         child: Text(AppLocalizations.of(context).translate('ok')),
-    //         onPressed: () {
-    //           Navigator.of(context).pop();
-    //           Navigator.of(context).pop();
-    //           if (hasWon) {
-    //             RateTheApp.showDialog(context);
-    //           }
-    //         },
-    //       )
-    //     ],
-    //   ),
-    // );
-    // TODO dialog
+  showDialog(bool hasWon) {
+    AwesomeDialog dialog;
+    if (hasWon) {
+      dialog = AwesomeDialog(
+          context: context,
+          dialogType: DialogType.SUCCES,
+          animType: AnimType.BOTTOMSLIDE,
+          dismissOnBackKeyPress: false,
+          dismissOnTouchOutside: false,
+          onDissmissCallback: () {
+            Navigator.pop(context);
+          },
+          title: "",
+          desc: AppLocalizations.of(context).translate('game.win'),
+          btnOkOnPress: () {
+            Navigator.pop(context);
+            RateTheApp.showDialog(context);
+          },
+          btnOkText: AppLocalizations.of(context).translate('ok'),
+          btnCancel: null);
+    } else {
+      dialog = AwesomeDialog(
+        context: context,
+        dialogType: DialogType.ERROR,
+        animType: AnimType.SCALE,
+        dismissOnBackKeyPress: false,
+        dismissOnTouchOutside: false,
+        title: "",
+        desc: AppLocalizations.of(context).translate('game.lose'),
+        btnCancelOnPress: () {
+          Navigator.pop(context);
+        },
+        btnCancelText: AppLocalizations.of(context).translate('ok'),
+        btnOk: null,
+      );
+    }
+    dialog.show();
   }
 }
