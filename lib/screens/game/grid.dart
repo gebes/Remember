@@ -1,6 +1,7 @@
 import 'dart:math';
 
-import 'package:Remember/app/app.dart';
+import 'package:Remember/utils/theme.dart';
+import 'package:Remember/main.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
         setState(() {
           int old = current;
           current = animation.value.toInt();
-          if (old != current) App.audioPlayer.play("showingPattern.mp3");
+          if (old != current) RememberApp.audioPlayer.play("showingPattern.mp3");
         });
       });
     controller.forward();
@@ -80,7 +81,7 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
         child: GestureDetector(
           child: Card(
             shadowColor: Colors.transparent,
-            color: wrongPress == i ? AppTheme.accentRed4 : haveBeenPressed.contains(i) ? Colors.transparent : current >= 0 && pattern[current] == i && isShowingPattern ? Colors.green : Colors.black,
+            color: wrongPress == i ? Colors.red : haveBeenPressed.contains(i) ? Colors.transparent : current >= 0 && pattern[current] == i && isShowingPattern ? Colors.green : Colors.black,
             //     child: wrongPress == i ? Container() : haveBeenPressed.contains(i)? Center(child: Text("${List.of(pattern).indexOf(i)+1}",style: TextStyle(fontSize: 36),)) : Container(),
           ),
           onTap: () {
@@ -92,7 +93,7 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
               }
               current++;
             });
-            if (wrongPress == -1) App.audioPlayer.play("click.mp3");
+            if (wrongPress == -1) RememberApp.audioPlayer.play("click.mp3");
             if (current == gridLength * gridLength || wrongPress != -1) {
               (wrongPress == -1) ? widget.onWin() : widget.onLose();
             }

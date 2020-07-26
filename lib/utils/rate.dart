@@ -1,7 +1,8 @@
 
-import 'package:Remember/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:rate_my_app/rate_my_app.dart';
+
+import 'app_localizations.dart';
 
 class RateTheApp {
   static void showDialog(BuildContext context) {
@@ -17,11 +18,11 @@ class RateTheApp {
     
      rateMyApp.showRateDialog(
       context,
-      title: Path('rate.title').get,
-      message: Path('rate.message').get,
-      rateButton: Path('rate.rateButton').get,
-      noButton: Path('rate.noButton').get,
-      laterButton: Path('rate.laterButton').get,
+      title: AppLocalizations.of(context).translate('rate.title'),
+      message: AppLocalizations.of(context).translate('rate.message'),
+      rateButton: AppLocalizations.of(context).translate('rate.rateButton'),
+      noButton: AppLocalizations.of(context).translate('rate.noButton'),
+      laterButton: AppLocalizations.of(context).translate('rate.laterButton'),
       listener: (button) { // The button click listener (useful if you want to cancel the click event).
         switch(button) {
           case RateMyAppDialogButton.rate:

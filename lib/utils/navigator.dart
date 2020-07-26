@@ -1,20 +1,19 @@
+import 'package:Remember/main.dart';
 import 'package:Remember/screens/game/game.dart';
 import 'package:Remember/screens/menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_page_transition/flutter_page_transition.dart';
 
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-import 'app.dart';
 
 class AppNavigator {
   static void navigateTo(String route, {dynamic args}) {
-    App.navigatorKey.currentState.pushNamed(route, arguments: args);
+    RememberApp.navigatorKey.currentState.pushNamed(route, arguments: args);
   }
 
   static void clearAllAndNavigateTo(String route, {dynamic args}) {
-    App.navigatorKey.currentState.pushNamedAndRemoveUntil(route, (Route<dynamic> route) => false, arguments: args);
+    RememberApp.navigatorKey.currentState.pushNamedAndRemoveUntil(route, (Route<dynamic> route) => false, arguments: args);
   }
 }
 

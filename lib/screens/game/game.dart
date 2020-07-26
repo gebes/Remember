@@ -1,7 +1,8 @@
 import 'dart:io';
 
-import 'package:Remember/app/app.dart';
+import 'package:Remember/utils/theme.dart';
 import 'package:Remember/screens/game/grid.dart';
+import 'package:Remember/utils/app_localizations.dart';
 import 'package:Remember/utils/rate.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -9,7 +10,8 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+
+import '../../main.dart';
 
 class Game extends StatefulWidget {
   final int gridsize;
@@ -40,7 +42,7 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark));
-    return PlatformScaffold(
+    return Scaffold(
       backgroundColor: AppTheme.primary,
       body: Stack(
         children: <Widget>[
@@ -55,14 +57,14 @@ class _GameState extends State<Game> {
                     child: GameLogic(
                       widget.gridsize,
                       onLose: () async {
-                        App.audioPlayer.play("wrong.mp3");
-                        showDialog(Path('game.lose').text, false);
+                        RememberApp.audioPlayer.play("wrong.mp3");
+                        showDialog(Text(AppLocalizations.of(context).translate('game.lose')), false);
                       },
                       onWin: () async {
                         _confettiControllerLeft.play();
                         _confettiControllerRight.play();
-                        App.audioPlayer.play("win.mp3");
-                        showDialog(Path('game.win').text, true);
+                        RememberApp.audioPlayer.play("win.mp3");
+                        showDialog(Text(AppLocalizations.of(context).translate('game.win')), true);
                       },
                     ),
                   ),
@@ -100,23 +102,24 @@ class _GameState extends State<Game> {
   }
 
   showDialog(Text content, bool hasWon) {
-    showPlatformDialog(
-      context: context,
-      builder: (_) => PlatformAlertDialog(
-        content: content,
-        actions: <Widget>[
-          PlatformDialogAction(
-            child: Path('ok').text,
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-              if (hasWon) {
-                RateTheApp.showDialog(context);
-              }
-            },
-          )
-        ],
-      ),
-    );
+    // showdDialog(
+    //   context: context,
+    //   builder: (_) => PlatformAlertDialog(
+    //     content: content,
+    //     actions: <Widget>[
+    //       PlatformDialogAction(
+    //         child: Text(AppLocalizations.of(context).translate('ok')),
+    //         onPressed: () {
+    //           Navigator.of(context).pop();
+    //           Navigator.of(context).pop();
+    //           if (hasWon) {
+    //             RateTheApp.showDialog(context);
+    //           }
+    //         },
+    //       )
+    //     ],
+    //   ),
+    // );
+    // TODO dialog
   }
 }
