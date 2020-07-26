@@ -53,7 +53,7 @@ class _GameMenuState extends State<GameMenu> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.width,
-                      child: FlareActor("assets/Logo.flr", animation: "hover"),
+                      child: FlareActor("assets/Logo.flr", animation: "hover",),
                     ),
                     Text(
                       AppLocalizations.of(context).translate("app.subtitle"),
