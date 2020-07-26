@@ -26,6 +26,7 @@ dependencies:
   confetti:
   awesome_dialog:
   devicelocale:
+  rate_my_app:
 
 dev_dependencies:
   flutter_test:

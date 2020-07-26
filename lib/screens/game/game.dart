@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:Remember/app/app.dart';
 import 'package:Remember/screens/game/grid.dart';
+import 'package:Remember/utils/rate.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:confetti/confetti.dart';
@@ -24,10 +25,8 @@ class _GameState extends State<Game> {
 
   @override
   void initState() {
-    _confettiControllerLeft =
-        ConfettiController(duration: const Duration(seconds: 4));
-    _confettiControllerRight =
-        ConfettiController(duration: const Duration(seconds: 4));
+    _confettiControllerLeft = ConfettiController(duration: const Duration(seconds: 4));
+    _confettiControllerRight = ConfettiController(duration: const Duration(seconds: 4));
     super.initState();
   }
 
@@ -38,12 +37,9 @@ class _GameState extends State<Game> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark));
     return PlatformScaffold(
       backgroundColor: AppTheme.primary,
       body: Stack(
@@ -55,8 +51,7 @@ class _GameState extends State<Game> {
                 shrinkWrap: true,
                 children: <Widget>[
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                    padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
                     child: GameLogic(
                       widget.gridsize,
                       onLose: () async {
@@ -115,6 +110,7 @@ class _GameState extends State<Game> {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
+                    RateTheApp.showDialog(context);
                   },
                 )
               ],

@@ -1,5 +1,5 @@
 {
-  "language.version": 1,
+  "language.version": 2,
 
   "app.title": "Remember",
   "app.subtitle": "Remember the pattern",
@@ -11,5 +11,11 @@
 
   "menu.2x2": "2x2",
   "menu.3x3": "3x3",
-  "menu.4x4": "4x4"
+  "menu.4x4": "4x4",
+
+  "rate.title": "Rate this app",
+  "rate.message": "If you like this app, please take a little bit of your time to review it!\nIt really helps us and it shouldn't take you more than one minute.",
+  "rate.rateButton": "RATE", 
+  "rate.noButton": "NO THANKS", 
+  "rate.laterButton": "MAYBE LATER"
 }
