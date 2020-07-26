@@ -71,7 +71,6 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     fields = [];
@@ -100,13 +99,12 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
           },
         ),
       ));
-    return Container(
-      child: GridView.count(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        crossAxisCount: gridLength,
-        children: fields,
-      ),
+    return GridView.count(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          crossAxisCount: gridLength,
+          children: fields,
+        physics: const NeverScrollableScrollPhysics()
     );
   }
 

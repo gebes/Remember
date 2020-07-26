@@ -48,11 +48,11 @@ class _GameState extends State<Game> {
         children: <Widget>[
           Container(
             child: Center(
-              child: Card(
-                  child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  Padding(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width+16,
+                child: Card(
+                  child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
                     child: GameLogic(
                       widget.gridsize,
@@ -68,8 +68,8 @@ class _GameState extends State<Game> {
                       },
                     ),
                   ),
-                ],
-              )),
+                ),
+              ),
             ),
           ),
           Align(
