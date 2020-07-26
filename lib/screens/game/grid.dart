@@ -99,12 +99,10 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
           },
         ),
       ));
-    return GridView.count(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          crossAxisCount: gridLength,
-          children: fields,
-        physics: const NeverScrollableScrollPhysics()
+    return Center(
+      child: Container(
+        child: GridView.count(scrollDirection: Axis.vertical, shrinkWrap: true, crossAxisCount: gridLength, children: fields, physics: const NeverScrollableScrollPhysics()),
+      ),
     );
   }
 
