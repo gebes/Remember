@@ -7,15 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class GameMenu extends StatefulWidget {
-  @override
-  _GameMenuState createState() => _GameMenuState();
-}
-
-class _GameMenuState extends State<GameMenu> {
+class GameMenu extends StatelessWidget{
   AudioCache player = new AudioCache();
 
-  button(int size) {
+  button(int size, BuildContext context) {
     return MaterialButton(
       color: AppTheme.primary,
       onPressed: () {
@@ -57,7 +52,7 @@ class _GameMenuState extends State<GameMenu> {
                     ),
                     Text(
                       AppLocalizations.of(context).translate("app.subtitle"),
-                      style: TextStyle(fontSize: 28, color: Colors.white),
+                      style: TextStyle(fontSize: 24, color: Colors.white),
                     ),
                   ],
                 ),
@@ -73,9 +68,9 @@ class _GameMenuState extends State<GameMenu> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        button(2),
-                        button(3),
-                        button(4),
+                        button(2, context),
+                        button(3, context),
+                        button(4, context),
                       ],
                     ),
                   ),

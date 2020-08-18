@@ -59,7 +59,6 @@ class RememberApp extends StatelessWidget {
       supportedLocales: [
         Locale('en', 'US'),
         Locale('de', 'DE'),
-        Locale('de', 'AT'),
       ],
       // These delegates make sure that the localization data for the proper language is loaded
       localizationsDelegates: [
