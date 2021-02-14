@@ -1,11 +1,11 @@
-import 'package:Remember/screens/menu.dart';
-import 'package:Remember/utils/app_localizations.dart';
-import 'package:Remember/utils/navigator.dart';
-import 'package:Remember/utils/theme.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:remember/screens/menu.dart';
+import 'package:remember/utils/app_localizations.dart';
+import 'package:remember/utils/navigator.dart';
+import 'package:remember/utils/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,8 @@ void main() {
 
 class RememberApp extends StatelessWidget {
   static AudioCache audioPlayer = AudioCache();
-  static final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorKey =
+      new GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,9 @@ class RememberApp extends StatelessWidget {
           textTheme: ButtonTextTheme.accent,
           splashColor: AppTheme.primary,
           buttonColor: AppTheme.secondary,
-          colorScheme: Theme.of(context).colorScheme.copyWith(secondary: Colors.white), // Text color
+          colorScheme: Theme.of(context)
+              .colorScheme
+              .copyWith(secondary: Colors.white), // Text color
         ),
       ),
       supportedLocales: [
@@ -74,7 +77,8 @@ class RememberApp extends StatelessWidget {
       localeResolutionCallback: (locale, supportedLocales) {
         // Check if the current device locale is supported
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode && supportedLocale.countryCode == locale.countryCode) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
             return supportedLocale;
           }
         }

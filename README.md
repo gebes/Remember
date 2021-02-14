@@ -11,11 +11,11 @@ As IDE, you could use Visual Studio Code, IntelliJ or Android Studio. Optional y
 #### How to run
 1. Open the folder with your IDE
 2. Then run `flutter pub get` (may take a while) in the console
-   * This downloads all required dependencies
+    * This downloads all required dependencies
 3. Connect your Android or iOS device and make sure it is unlocked
 4. Execute `flutter run`
-   * If you have multiple devices, you can run the app on all of those, by executing `flutter run -d all`
-   * Optionally you can also add the `--release` parameter, which prevents flutter from starting the debug mode. Flutter will build an app which runs in production mode.
+    * If you have multiple devices, you can run the app on all of those, by executing `flutter run -d all`
+    * Optionally you can also add the `--release` parameter, which prevents flutter from starting the debug mode. Flutter will build an app which runs in production mode.
 5. Test the app on your device after it has built
 
 

@@ -1,15 +1,12 @@
-import 'dart:io';
-
-import 'package:Remember/utils/navigator.dart';
-import 'package:Remember/utils/rate.dart';
-import 'package:Remember/utils/theme.dart';
-import 'package:Remember/screens/game/grid.dart';
-import 'package:Remember/utils/app_localizations.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:remember/screens/game/grid.dart';
+import 'package:remember/utils/app_localizations.dart';
+import 'package:remember/utils/rate.dart';
+import 'package:remember/utils/theme.dart';
 
 import '../../main.dart';
 
@@ -27,8 +24,10 @@ class _GameState extends State<Game> {
 
   @override
   void initState() {
-    _confettiControllerLeft = ConfettiController(duration: const Duration(seconds: 4));
-    _confettiControllerRight = ConfettiController(duration: const Duration(seconds: 4));
+    _confettiControllerLeft =
+        ConfettiController(duration: const Duration(seconds: 4));
+    _confettiControllerRight =
+        ConfettiController(duration: const Duration(seconds: 4));
     super.initState();
   }
 
@@ -41,32 +40,31 @@ class _GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark));
     return Scaffold(
       backgroundColor: AppTheme.primary,
       body: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
           Container(
             child: Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width+16,
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                    child: GameLogic(
-                      widget.gridsize,
-                      onLose: () async {
-                        RememberApp.audioPlayer.play("wrong.mp3");
-                        showDialog(false);
-                      },
-                      onWin: () async {
-                        _confettiControllerLeft.play();
-                        _confettiControllerRight.play();
-                        RememberApp.audioPlayer.play("win.mp3");
-                        showDialog(true);
-                      },
-                    ),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: GameLogic(
+                    widget.gridsize,
+                    onLose: () async {
+                      RememberApp.audioPlayer.play("wrong.mp3");
+                      showDialog(false);
+                    },
+                    onWin: () async {
+                      _confettiControllerLeft.play();
+                      _confettiControllerRight.play();
+                      RememberApp.audioPlayer.play("win.mp3");
+                      showDialog(true);
+                    },
                   ),
                 ),
               ),

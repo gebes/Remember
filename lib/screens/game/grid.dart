@@ -1,10 +1,9 @@
 import 'dart:math';
 
-import 'package:Remember/utils/theme.dart';
-import 'package:Remember/main.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:remember/main.dart';
 
 class GameLogic extends StatefulWidget {
   final int gridLength;
@@ -17,7 +16,8 @@ class GameLogic extends StatefulWidget {
   _GameLogicState createState() => _GameLogicState(this.gridLength);
 }
 
-class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMixin {
+class _GameLogicState extends State<GameLogic>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
 
@@ -50,23 +50,27 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
 
   @override
   void initState() {
-    controller = AnimationController(duration: Duration(seconds: gridLength * gridLength), vsync: this);
-    animation = Tween<double>(begin: -1, end: (gridLength * gridLength).toDouble()).animate(controller)
-      ..addListener(() {
-        if (animation.value == gridLength * gridLength) {
-          current = 0;
-          setState(() {
-            isShowingPattern = false;
-          });
-          return;
-        }
-        if (animation.value < 0) return;
-        setState(() {
-          int old = current;
-          current = animation.value.toInt();
-          if (old != current) RememberApp.audioPlayer.play("showingPattern.mp3");
-        });
-      });
+    controller = AnimationController(
+        duration: Duration(seconds: gridLength * gridLength), vsync: this);
+    animation =
+        Tween<double>(begin: -1, end: (gridLength * gridLength).toDouble())
+            .animate(controller)
+              ..addListener(() {
+                if (animation.value == gridLength * gridLength) {
+                  current = 0;
+                  setState(() {
+                    isShowingPattern = false;
+                  });
+                  return;
+                }
+                if (animation.value < 0) return;
+                setState(() {
+                  int old = current;
+                  current = animation.value.toInt();
+                  if (old != current)
+                    RememberApp.audioPlayer.play("showingPattern.mp3");
+                });
+              });
     controller.forward();
     super.initState();
   }
@@ -80,11 +84,19 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
         child: GestureDetector(
           child: Card(
             shadowColor: Colors.transparent,
-            color: wrongPress == i ? Colors.red : haveBeenPressed.contains(i) ? Colors.transparent : current >= 0 && pattern[current] == i && isShowingPattern ? Colors.green : Colors.black,
+            color: wrongPress == i
+                ? Colors.red
+                : haveBeenPressed.contains(i)
+                    ? Colors.transparent
+                    : current >= 0 && pattern[current] == i && isShowingPattern
+                        ? Colors.green
+                        : Colors.black,
             //     child: wrongPress == i ? Container() : haveBeenPressed.contains(i)? Center(child: Text("${List.of(pattern).indexOf(i)+1}",style: TextStyle(fontSize: 36),)) : Container(),
           ),
           onTap: () {
-            if (wrongPress != -1 || isShowingPattern || haveBeenPressed.contains(i)) return;
+            if (wrongPress != -1 ||
+                isShowingPattern ||
+                haveBeenPressed.contains(i)) return;
             setState(() {
               haveBeenPressed.add(i);
               if (pattern[current] != i) {
@@ -99,10 +111,13 @@ class _GameLogicState extends State<GameLogic> with SingleTickerProviderStateMix
           },
         ),
       ));
-    return Center(
-      child: Container(
-        child: GridView.count(scrollDirection: Axis.vertical, shrinkWrap: true, crossAxisCount: gridLength, children: fields, physics: const NeverScrollableScrollPhysics()),
-      ),
+    return Container(
+      child: GridView.count(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          crossAxisCount: gridLength,
+          children: fields,
+          physics: const NeverScrollableScrollPhysics()),
     );
   }
 
