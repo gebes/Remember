@@ -14,8 +14,8 @@
   "menu.3x3": "3x3",
   "menu.4x4": "4x4" ,
 
-  "rate.title": "Bewertie die App",
-  "rate.message": "Wenn dir das Spiel gefällt, dann nimm dir bitte kurz Zeit es zu bewerten.!\nEs hilft uns wirklich sehr und sollte nicht länger als eine Minute dauern.",
+  "rate.title": "Bewerte die App",
+  "rate.message": "Wenn dir das Spiel gefällt, dann nimm dir bitte kurz Zeit es zu bewerten!\nEs hilft uns wirklich sehr und sollte nicht länger als eine Minute dauern.",
   "rate.rateButton": "BEWERTEN", 
   "rate.noButton": "NEIN, DANKE", 
   "rate.laterButton": "VIELLEICHT SPÄTER"
